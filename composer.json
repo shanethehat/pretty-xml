@@ -1,0 +1,20 @@
+{
+    "name": "shanethehat/pretty-xml",
+    "description": "Library for pretty-printing XML",
+    "type": "library",
+    "require-dev": {
+        "phpspec/phpspec": "~2.0"
+    },
+    "authors": [
+        {
+            "name": "Shane Auckland",
+            "email": "shane.auckland@gmail.com",
+            "homepage": "http://shaneauckland.co.uk"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "PrettyXml": "src/"
+        }
+    }
+}
