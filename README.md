@@ -2,6 +2,8 @@
 
 A tiny library for pretty printing XML, inspired purely from DomDocument's lack of ability to configure indent distance.
 
+[![Build Status](https://travis-ci.org/shanethehat/pretty-xml.png?branch=master)](https://travis-ci.org/shanethehat/pretty-xml)
+
 ## Usage
 
 Install by adding to your composer.json:
