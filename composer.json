@@ -18,5 +18,8 @@
         "psr-0": {
             "PrettyXml": "src/"
         }
+    },
+    "config": {
+        "bin-dir": "bin"
     }
 }
