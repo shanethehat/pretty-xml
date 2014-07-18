@@ -82,4 +82,17 @@ XML
 XML
             );
     }
+
+    function it_can_change_the_indent_character()
+    {
+        $this->setIndentCharacter('_');
+        $this->format('<?xml version="1.0" encoding="UTF-8"?><foo><bar>Baz</bar></foo>')
+            ->shouldReturn(<<<XML
+<?xml version="1.0" encoding="UTF-8"?>
+<foo>
+____<bar>Baz</bar>
+</foo>
+XML
+            );
+    }
 }

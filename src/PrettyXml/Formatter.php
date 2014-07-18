@@ -28,6 +28,14 @@ class Formatter
     }
 
     /**
+     * @param string $indentCharacter
+     */
+    public function setIndentCharacter($indentCharacter)
+    {
+        $this->padChar = $indentCharacter;
+    }
+
+    /**
      * @param string $xml
      * @return string
      */
