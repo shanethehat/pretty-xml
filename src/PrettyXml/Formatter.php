@@ -51,6 +51,7 @@ class Formatter
         }
 
         foreach($parts as $part) {
+            $part = trim($part);
             if ($this->isClosingTag($part)) {
                 $this->depth--;
             }

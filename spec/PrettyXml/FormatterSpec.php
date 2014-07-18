@@ -95,4 +95,25 @@ ____<bar>Baz</bar>
 XML
             );
     }
+
+    function it_removes_existing_excess_whitespace()
+    {
+        $this->format(<<<XML
+<?xml version="1.0" encoding="UTF-8"?>
+<foo>
+    <bar>Baz</bar>
+    <egg><bacon>Yum</bacon></egg>
+</foo>
+XML
+        )->shouldReturn(<<<XML
+<?xml version="1.0" encoding="UTF-8"?>
+<foo>
+    <bar>Baz</bar>
+    <egg>
+        <bacon>Yum</bacon>
+    </egg>
+</foo>
+XML
+        );
+    }
 }
