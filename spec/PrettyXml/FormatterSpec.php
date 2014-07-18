@@ -69,4 +69,17 @@ XML
 XML
             );
     }
+
+    function it_can_change_the_size_of_the_indent()
+    {
+        $this->setIndentSize(2);
+        $this->format('<?xml version="1.0" encoding="UTF-8"?><foo><bar>Baz</bar></foo>')
+            ->shouldReturn(<<<XML
+<?xml version="1.0" encoding="UTF-8"?>
+<foo>
+  <bar>Baz</bar>
+</foo>
+XML
+            );
+    }
 }

@@ -8,14 +8,24 @@ class Formatter
      * @var int
      */
     private $depth;
+
     /**
      * @var int
      */
     private $indent = 4;
+
     /**
-     * @varstring
+     * @var string
      */
     private $padChar = ' ';
+
+    /**
+     * @param int $indent
+     */
+    public function setIndentSize($indent)
+    {
+        $this->indent = intval($indent);
+    }
 
     /**
      * @param string $xml
