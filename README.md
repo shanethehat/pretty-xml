@@ -2,6 +2,31 @@
 
 A tiny library for pretty printing XML, inspired purely from DomDocument's lack of ability to configure indent distance.
 
+## Usage
+
+Install by adding to your composer.json:
+
+```
+{
+    "require": {
+        "shanethehat/pretty-xml": "~0.2"
+    }
+}
+```
+
+To use, just give it a badly indented (but well formed) XML string:
+
+```
+use PrettyXml/Formatter;
+
+$formatter = new Formatter();
+echo $formatter->format('<?xml version="1.0" encoding="UTF-8"?><foo><bar>Baz</bar></foo>');
+```
+
+You can also change the size of the indent: ```$formatter->setIndentSize(2);```
+
+And you can change the indent character: ```$formatter->getIndentCharacter("\t");```
+
 ## License and Authors
 
 Authors: <https://github.com/shanethehat/pretty-xml/contributors>
