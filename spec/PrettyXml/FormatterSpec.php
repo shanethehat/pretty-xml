@@ -3,7 +3,6 @@
 namespace spec\PrettyXml;
 
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class FormatterSpec extends ObjectBehavior
 {
