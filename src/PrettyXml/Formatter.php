@@ -64,22 +64,34 @@ class Formatter
         return trim($output);
     }
 
+    /**
+     * @param string $xml
+     */
     private function getXmlParts($xml)
     {
         $withNewLines = preg_replace('/(>)(<)(\/*)/', "$1\n$2$3", trim($xml));
         return explode("\n", $withNewLines);
     }
 
+    /**
+     * @param string $part
+     */
     private function getPaddedString($part)
     {
         return str_pad($part, strlen($part) + ($this->depth * $this->indent), $this->padChar, STR_PAD_LEFT);
     }
 
+    /**
+     * @param string $part
+     */
     private function isOpeningTag($part)
     {
         return preg_match('/^<[^\/]\w*>$/', $part);
     }
 
+    /**
+     * @param string $part
+     */
     private function isClosingTag($part)
     {
         return preg_match('/^<\//', $part);
