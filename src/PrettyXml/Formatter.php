@@ -20,6 +20,11 @@ class Formatter
     private $padChar = ' ';
 
     /**
+     * @var boolean
+     */
+    private $preserveWhitespace = false;
+
+    /**
      * @param int $indent
      */
     public function setIndentSize($indent)
@@ -51,13 +56,23 @@ class Formatter
         }
 
         foreach($parts as $part) {
-            $part = trim($part);
             if ($this->isClosingTag($part)) {
                 $this->depth--;
             }
-            $output .= $this->getPaddedString($part) . PHP_EOL;
+            if ($this->preserveWhitespace) {
+                $output .= $part . PHP_EOL;
+            } else {
+                $part = trim($part);
+                $output .= $this->getPaddedString($part) . PHP_EOL;
+            }
             if ($this->isOpeningTag($part)) {
                 $this->depth++;
+            }
+            if ($this->isClosingCdataTag($part)) {
+                $this->preserveWhitespace = false;
+            }
+            if ($this->isOpeningCdataTag($part)) {
+                $this->preserveWhitespace = true;
             }
         }
 
@@ -66,6 +81,7 @@ class Formatter
 
     /**
      * @param string $xml
+     * @return array
      */
     private function getXmlParts($xml)
     {
@@ -75,6 +91,7 @@ class Formatter
 
     /**
      * @param string $part
+     * @return string
      */
     private function getPaddedString($part)
     {
@@ -83,6 +100,7 @@ class Formatter
 
     /**
      * @param string $part
+     * @return boolean
      */
     private function isOpeningTag($part)
     {
@@ -91,9 +109,28 @@ class Formatter
 
     /**
      * @param string $part
+     * @return boolean
      */
     private function isClosingTag($part)
     {
         return preg_match('/^<\//', $part);
+    }
+
+    /**
+     * @param string $part
+     * @return boolean
+     */
+    private function isOpeningCdataTag($part)
+    {
+        return preg_match('/<!\[CDATA\[/', $part);
+    }
+
+    /**
+     * @param string $part
+     * @return boolean
+     */
+    private function isClosingCdataTag($part)
+    {
+        return preg_match('/]]>/', $part);
     }
 }
