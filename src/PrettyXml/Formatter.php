@@ -56,24 +56,16 @@ class Formatter
         }
 
         foreach($parts as $part) {
-            if ($this->isClosingTag($part)) {
-                $this->depth--;
-            }
+            $this->runPre($parts);
+
             if ($this->preserveWhitespace) {
                 $output .= $part . PHP_EOL;
             } else {
                 $part = trim($part);
                 $output .= $this->getPaddedString($part) . PHP_EOL;
             }
-            if ($this->isOpeningTag($part)) {
-                $this->depth++;
-            }
-            if ($this->isClosingCdataTag($part)) {
-                $this->preserveWhitespace = false;
-            }
-            if ($this->isOpeningCdataTag($part)) {
-                $this->preserveWhitespace = true;
-            }
+
+            $this->runPost($part);
         }
 
         return trim($output);
@@ -87,6 +79,32 @@ class Formatter
     {
         $withNewLines = preg_replace('/(>)(<)(\/*)/', "$1\n$2$3", trim($xml));
         return explode("\n", $withNewLines);
+    }
+
+    /**
+     * @param string $part
+     */
+    private function runPre($part)
+    {
+        if ($this->isClosingTag($part)) {
+            $this->depth--;
+        }
+    }
+
+    /**
+     * @param string $part
+     */
+    private function runPost($part)
+    {
+        if ($this->isOpeningTag($part)) {
+            $this->depth++;
+        }
+        if ($this->isClosingCdataTag($part)) {
+            $this->preserveWhitespace = false;
+        }
+        if ($this->isOpeningCdataTag($part)) {
+            $this->preserveWhitespace = true;
+        }
     }
 
     /**
