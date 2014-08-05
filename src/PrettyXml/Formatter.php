@@ -56,7 +56,7 @@ class Formatter
         }
 
         foreach($parts as $part) {
-            $this->runPre($parts);
+            $this->runPre($part);
 
             if ($this->preserveWhitespace) {
                 $output .= $part . PHP_EOL;
@@ -122,7 +122,7 @@ class Formatter
      */
     private function isOpeningTag($part)
     {
-        return preg_match('/^<[^\/]\w*>$/', $part);
+        return (bool) preg_match('/^<[^\/]\w*>$/', $part);
     }
 
     /**
@@ -131,7 +131,7 @@ class Formatter
      */
     private function isClosingTag($part)
     {
-        return preg_match('/^<\//', $part);
+        return (bool) preg_match('/^<\//', $part);
     }
 
     /**
@@ -140,7 +140,7 @@ class Formatter
      */
     private function isOpeningCdataTag($part)
     {
-        return preg_match('/<!\[CDATA\[/', $part);
+        return strpos($part, '<![CDATA[') !== false;
     }
 
     /**
@@ -149,6 +149,6 @@ class Formatter
      */
     private function isClosingCdataTag($part)
     {
-        return preg_match('/]]>/', $part);
+        return strpos($part, ']]>') !== false;
     }
 }
