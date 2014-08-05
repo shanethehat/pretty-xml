@@ -13,7 +13,7 @@ Install by adding to your composer.json:
 ```
 {
     "require": {
-        "shanethehat/pretty-xml": "~0.2"
+        "shanethehat/pretty-xml": "~1.0"
     }
 }
 ```
