@@ -131,7 +131,7 @@ class Formatter
      */
     private function isClosingTag($part)
     {
-        return (bool) preg_match('/^<\//', $part);
+        return (bool) preg_match('/^\s*<\//', $part);
     }
 
     /**

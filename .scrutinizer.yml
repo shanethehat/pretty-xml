@@ -5,8 +5,8 @@ imports:
 tools:
   php_code_sniffer:
     filter:
-      excluded-paths: [ spec/*, vendor/* ]
+      excluded-paths: [ features/*, spec/*, vendor/* ]
 
   php_analyzer:
     filter:
-      excluded-paths: [ spec/*, vendor/* ]
+      excluded-paths: [ features/*, spec/*, vendor/* ]
