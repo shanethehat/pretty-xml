@@ -56,16 +56,7 @@ class Formatter
         }
 
         foreach ($parts as $part) {
-            $this->runPre($part);
-
-            if ($this->preserveWhitespace) {
-                $output .= $part . PHP_EOL;
-            } else {
-                $part = trim($part);
-                $output .= $this->getPaddedString($part) . PHP_EOL;
-            }
-
-            $this->runPost($part);
+            $output .= $this->getOutputForPart($part);
         }
 
         return trim($output);
@@ -79,6 +70,27 @@ class Formatter
     {
         $withNewLines = preg_replace('/(>)(<)(\/*)/', "$1\n$2$3", trim($xml));
         return explode("\n", $withNewLines);
+    }
+
+    /**
+     * @param string $part
+     * @return string
+     */
+    private function getOutputForPart($part)
+    {
+        $output = '';
+        $this->runPre($part);
+
+        if ($this->preserveWhitespace) {
+            $output .= $part . PHP_EOL;
+        } else {
+            $part = trim($part);
+            $output .= $this->getPaddedString($part) . PHP_EOL;
+        }
+
+        $this->runPost($part);
+
+        return $output;
     }
 
     /**
