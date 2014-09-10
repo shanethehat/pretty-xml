@@ -11,6 +11,7 @@ before_script:
   - composer install
 
 script:
+  - ./bin/behat
   - ./bin/phpspec run
 
 notifications:
