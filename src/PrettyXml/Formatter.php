@@ -55,7 +55,7 @@ class Formatter
             $output = array_shift($parts) . PHP_EOL;
         }
 
-        foreach($parts as $part) {
+        foreach ($parts as $part) {
             $this->runPre($part);
 
             if ($this->preserveWhitespace) {
