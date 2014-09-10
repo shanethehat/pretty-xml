@@ -18,6 +18,22 @@ XML
             );
     }
 
+    function it_should_indent_a_very_nested_element()
+    {
+        $this->format('<?xml version="1.0" encoding="UTF-8"?><foo><bar><bacon><bob>Baz</bob></bacon></bar></foo>')
+            ->shouldReturn(<<<XML
+<?xml version="1.0" encoding="UTF-8"?>
+<foo>
+    <bar>
+        <bacon>
+            <bob>Baz</bob>
+        </bacon>
+    </bar>
+</foo>
+XML
+            );
+    }
+
     function it_should_indent_two_nested_elements()
     {
         $this->format('<?xml version="1.0" encoding="UTF-8"?><foo><bar>Baz</bar><egg>Bacon</egg></foo>')
@@ -101,7 +117,9 @@ XML
 <?xml version="1.0" encoding="UTF-8"?>
 <foo>
     <bar>Baz</bar>
-    <egg><bacon>Yum</bacon></egg>
+    <egg>
+                <bacon>Yum</bacon>
+                        </egg>
 </foo>
 XML
         )->shouldReturn(<<<XML
@@ -135,5 +153,17 @@ whitespaced   words
 </foo>
 XML
         );
+    }
+
+    function it_should_support_underscores_in_tag_names()
+    {
+        $this->format('<?xml version="1.0" encoding="UTF-8"?><foo><foo_bar>Baz</foo_bar></foo>')
+            ->shouldReturn(<<<XML
+<?xml version="1.0" encoding="UTF-8"?>
+<foo>
+    <foo_bar>Baz</foo_bar>
+</foo>
+XML
+            );
     }
 }
