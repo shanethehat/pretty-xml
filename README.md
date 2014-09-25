@@ -21,7 +21,7 @@ Install by adding to your composer.json:
 To use, just give it a badly indented (but well formed) XML string:
 
 ```
-use PrettyXml/Formatter;
+use PrettyXml\Formatter;
 
 $formatter = new Formatter();
 echo $formatter->format('<?xml version="1.0" encoding="UTF-8"?><foo><bar>Baz</bar></foo>');
