@@ -14,7 +14,7 @@ Install by adding to your composer.json:
 ```
 {
     "require": {
-        "shanethehat/pretty-xml": "~1.0.1"
+        "shanethehat/pretty-xml": "~1.0.2"
     }
 }
 ```
@@ -30,7 +30,7 @@ echo $formatter->format('<?xml version="1.0" encoding="UTF-8"?><foo><bar>Baz</ba
 
 You can also change the size of the indent: ```$formatter->setIndentSize(2);```
 
-And you can change the indent character: ```$formatter->getIndentCharacter("\t");```
+And you can change the indent character: ```$formatter->setIndentCharacter("\t");```
 
 ## License and Authors
 
