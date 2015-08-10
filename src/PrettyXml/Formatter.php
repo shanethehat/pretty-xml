@@ -134,7 +134,7 @@ class Formatter
      */
     private function isOpeningTag($part)
     {
-        return (bool) preg_match('/^<[^\/]\w*>$/', $part);
+        return (bool) preg_match('/^<[^\/]*>$/', $part);
     }
 
     /**

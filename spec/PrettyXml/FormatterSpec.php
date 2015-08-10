@@ -85,6 +85,18 @@ XML
             );
     }
 
+    function it_should_indent_a_nested_element_when_parent_has_attributes()
+    {
+        $this->format('<?xml version="1.0" encoding="UTF-8"?><foo a="b"><bar>Baz</bar></foo>')
+            ->shouldReturn(<<<XML
+<?xml version="1.0" encoding="UTF-8"?>
+<foo a="b">
+    <bar>Baz</bar>
+</foo>
+XML
+            );
+    }
+
     function it_should_change_the_size_of_the_indent()
     {
         $this->setIndentSize(2);
