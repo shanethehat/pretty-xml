@@ -75,11 +75,11 @@ XML
 
     function it_should_indent_a_nested_element_with_an_attribute()
     {
-        $this->format('<?xml version="1.0" encoding="UTF-8"?><foo><bar a="b">Baz</bar></foo>')
+        $this->format('<?xml version="1.0" encoding="UTF-8"?><foo a="b"><bar c="d">Baz</bar></foo>')
             ->shouldReturn(<<<XML
 <?xml version="1.0" encoding="UTF-8"?>
-<foo>
-    <bar a="b">Baz</bar>
+<foo a="b">
+    <bar c="d">Baz</bar>
 </foo>
 XML
             );
