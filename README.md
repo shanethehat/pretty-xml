@@ -2,8 +2,8 @@
 
 A tiny library for pretty printing XML, inspired purely from DomDocument's lack of ability to configure indent distance.
 
-[![Build Status](https://scrutinizer-ci.com/g/shanethehat/pretty-xml/badges/build.png?b=master)](https://scrutinizer-ci.com/g/shanethehat/pretty-xml/build-status/master)
 [![Codeship Status for shanethehat/pretty-xml](https://codeship.com/projects/f39e1f60-287d-0133-aab6-66f03b379c4a/status?branch=master)](https://codeship.com/projects/97705)
+[![Build Status](https://scrutinizer-ci.com/g/shanethehat/pretty-xml/badges/build.png?b=master)](https://scrutinizer-ci.com/g/shanethehat/pretty-xml/build-status/master)
 ![Quality Score](https://scrutinizer-ci.com/g/shanethehat/pretty-xml/badges/quality-score.png?b=master)
 [![Latest Stable Version](https://poser.pugx.org/shanethehat/pretty-xml/v/stable)](https://packagist.org/packages/shanethehat/pretty-xml) 
 [![Total Downloads](https://poser.pugx.org/shanethehat/pretty-xml/downloads)](https://packagist.org/packages/shanethehat/pretty-xml)
